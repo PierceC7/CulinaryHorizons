@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "culinaryhorizons:roast_chicken_block"
+  }
+}

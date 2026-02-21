@@ -1,0 +1,90 @@
+itemGroup.culinaryhorizons=Culinary Horizons
+
+effect.culinaryhorizons.comfort=Comfort
+effect.culinaryhorizons.nourishment=Nourishment
+
+item.cabbage.name=Cabbage
+item.tomato.name=Tomato
+item.onion.name=Onion
+
+item.fried_egg.name=Fried Egg
+item.pie_crust.name=Pie Crust
+item.pumpkin_slice.name=Pumpkin Slice
+item.cabbage_leaf.name=Cabbage Leaf
+item.minced_beef.name=Minced Beef
+item.beef_patty.name=Beef Patty
+item.cooked_chicken_cuts.name=Cooked Chicken Cuts
+item.bacon.name=Bacon
+item.cooked_bacon.name=Cooked Bacon
+item.cod_slice.name=Cod Slice
+item.cooked_cod_slice.name=Cooked Cod Slice
+item.salmon_slice.name=Salmon Slice
+item.cooked_salmon_slice.name=Cooked Salmon Slice
+item.mutton_chops.name=Mutton Chops
+item.cooked_mutton_chops.name=Cooked Mutton Chops
+item.ham.name=Ham
+item.smoked_ham.name=Smoked Ham
+item.wheat_dough.name=Wheat Dough
+item.raw_pasta.name=Raw Pasta
+item.chicken_cuts.name=Chicken Cuts
+item.mixed_salad.name=Mixed Salad
+item.nether_salad.name=Nether Salad
+
+item.sweet_berry_cookie.name=Sweet Berry Cookie
+item.honey_cookie.name=Honey Cookie
+item.apple_pie_slice.name=Apple Pie Slice
+item.sweet_berry_cheesecake_slice.name=Sweet Berry Cheesecake Slice
+item.chocolate_pie_slice.name=Chocolate Pie Slice
+item.cake_slice.name=Cake Slice
+item.melon_popsicle.name=Melon Popsicle
+item.fruit_salad.name=Fruit Salad
+
+item.barbecue_stick.name=Barbecue Stick
+item.egg_sandwich.name=Egg Sandwich
+item.chicken_sandwich.name=Chicken Sandwich
+item.hamburger.name=Hamburger
+item.bacon_sandwich.name=Bacon Sandwich
+item.mutton_wrap.name=Mutton Wrap
+item.dumplings.name=Dumplings
+item.stuffed_potato.name=Stuffed Potato
+item.cabbage_rolls.name=Cabbage Rolls
+item.salmon_roll.name=Salmon Roll
+item.cod_roll.name=Cod Roll
+item.kelp_roll.name=Kelp Roll
+item.kelp_roll_slice.name=Kelp Roll Slice
+
+item.cooked_rice.name=Cooked Rice
+item.beef_stew.name=Beef Stew
+item.chicken_soup.name=Chicken Soup
+item.bone_broth.name=Bone Broth
+item.vegetable_soup.name=Vegetable Soup
+item.fish_stew.name=Fish Stew
+item.fried_rice.name=Fried Rice
+item.pumpkin_soup.name=Pumpkin Soup
+item.baked_cod_stew.name=Baked Cod Stew
+item.noodle_soup.name=Noodle Soup
+
+item.bacon_and_eggs.name=Bacon and Eggs
+item.ratatouille.name=Ratatouille
+item.steak_and_potatoes.name=Steak and Potatoes
+item.pasta_with_meatballs.name=Pasta with Meatballs
+item.pasta_with_mutton_chop.name=Pasta with Mutton Chop
+item.mushroom_rice.name=Mushroom Rice
+item.roasted_mutton_chops.name=Roasted Mutton Chops
+item.vegetable_noodles.name=Vegetable Noodles
+item.squid_ink_pasta.name=Squid Ink Pasta
+item.grilled_salmon.name=Grilled Salmon
+
+item.roast_chicken_portion.name=Plate of Roast Chicken
+item.stuffed_pumpkin_portion.name=Plate of Stuffed Pumpkin
+item.honey_glazed_ham_portion.name=Plate of Honey Glazed Ham
+item.shepherds_pie_portion.name=Plate of Shepherd's Pie
+
+tile.roast_chicken_block.name=Roast Chicken
+tile.roast_chicken_plate.name=Roast Chicken Leftovers
+tile.stuffed_pumpkin_block.name=Stuffed Pumpkin
+tile.stuffed_pumpkin_plate.name=Stuffed Pumpkin Leftovers
+tile.honey_glazed_ham_block.name=Honey Glazed Ham
+tile.honey_glazed_ham_plate.name=Honey Glazed Ham Leftovers
+tile.shepherds_pie_block.name=Shepherd's Pie
+tile.shepherds_pie_Plate.name=Shepherd's Pie Leftovers
