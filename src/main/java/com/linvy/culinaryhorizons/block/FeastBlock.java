@@ -101,12 +101,14 @@ public class FeastBlock extends Block implements ITileEntityProvider {
         ItemStack serving = null;
         if (te instanceof FeastTileEntity) {
             servings = ((FeastTileEntity) te).getServings();
-            if (servings > 0) {
+            if (servings > 0 && !(servings == 1 && !this.hasLeftovers)) {
                 ((FeastTileEntity) te).setServings(--servings);
             } else {
                 world.playSoundEffect(x + 0.5, y + 0.5, z + 0.5, "dig.wood", 0.8F, 0.8F);
                 world.func_147480_a(x, y, z, true);
-                return true;
+                if(this.hasLeftovers){
+                    return true;
+                }
             }
             serving = new ItemStack(((FeastTileEntity) te).getCurrentServingItem());
 

@@ -1,5 +1,6 @@
 package com.linvy.culinaryhorizons;
 
+import cpw.mods.fml.common.Mod;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -9,6 +10,8 @@ import net.minecraft.item.ItemStack;
 import com.linvy.culinaryhorizons.block.FeastBlock;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+
+import java.lang.reflect.Array;
 
 // Credit to Et Futurum (Requiem)
 public enum ModBlocks {
@@ -51,6 +54,15 @@ public enum ModBlocks {
             true,
             new ItemStack(Items.bowl)
         ),"shepherds_pie_block"
+    ),
+
+    RICE_ROLL_MEDLEY_BLOCK(
+      new FeastBlock(new Item[]{ModItems.COD_ROLL,
+        ModItems.COD_ROLL, ModItems.SALMON_ROLL,
+        ModItems.SALMON_ROLL, ModItems.SALMON_ROLL,
+        ModItems.KELP_ROLL_SLICE, ModItems.KELP_ROLL_SLICE,
+        ModItems.KELP_ROLL_SLICE}, true, new ItemStack(Items.bowl)
+      ), "rice_roll_medley_block"
     ),
     ; // leave trailing semicolon
     //spotless:on

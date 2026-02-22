@@ -11,6 +11,7 @@ public class CommonProxy {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
+        ModEffects.init();
         ModItems.init();
         ModBlocks.init();
 

@@ -81,10 +81,7 @@ item.honey_glazed_ham_portion.name=Plate of Honey Glazed Ham
 item.shepherds_pie_portion.name=Plate of Shepherd's Pie
 
 tile.roast_chicken_block.name=Roast Chicken
-tile.roast_chicken_plate.name=Roast Chicken Leftovers
 tile.stuffed_pumpkin_block.name=Stuffed Pumpkin
-tile.stuffed_pumpkin_plate.name=Stuffed Pumpkin Leftovers
 tile.honey_glazed_ham_block.name=Honey Glazed Ham
-tile.honey_glazed_ham_plate.name=Honey Glazed Ham Leftovers
 tile.shepherds_pie_block.name=Shepherd's Pie
-tile.shepherds_pie_Plate.name=Shepherd's Pie Leftovers
+tile.rice_roll_medley_block.name=Rice Roll Medley

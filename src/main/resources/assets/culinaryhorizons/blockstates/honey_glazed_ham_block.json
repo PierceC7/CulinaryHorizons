@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "meta=0": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_leftover", "y": 0},
+    "meta=1": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_leftover", "y": 90},
+    "meta=2": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_leftover", "y": 180},
+    "meta=3": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_leftover", "y": 270},
+
+    "meta=4": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage3", "y": 0},
+    "meta=5": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage3", "y": 90},
+    "meta=6": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage3", "y": 180},
+    "meta=7": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage3", "y": 270},
+
+    "meta=8": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage2", "y": 0},
+    "meta=9": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage2", "y": 90},
+    "meta=10": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage2", "y": 180},
+    "meta=11": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage2", "y": 270},
+
+    "meta=12": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage1", "y": 0},
+    "meta=13": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage1", "y": 90},
+    "meta=14": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage1", "y": 180},
+    "meta=15": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage1", "y": 270},
+
+    "meta=16": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage0", "y": 0},
+    "meta=17": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage0", "y": 90},
+    "meta=18": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage0", "y": 180},
+    "meta=19": {"model": "culinaryhorizons:blocks/honey_glazed_ham/honey_glazed_ham_block_stage0", "y": 270}
+  }
+}
