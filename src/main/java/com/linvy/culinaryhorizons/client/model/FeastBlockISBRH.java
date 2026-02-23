@@ -8,7 +8,7 @@ import com.gtnewhorizon.gtnhlib.client.model.ModelISBRH;
 import com.gtnewhorizon.gtnhlib.client.model.baked.BakedModel;
 import com.gtnewhorizon.gtnhlib.client.model.loading.ModelRegistry;
 import com.gtnewhorizon.gtnhlib.client.model.state.BlockState;
-import com.linvy.culinaryhorizons.block.FeastTileEntity;
+import com.linvy.culinaryhorizons.TileEntity.FeastTileEntity;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 

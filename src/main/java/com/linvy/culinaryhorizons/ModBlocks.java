@@ -1,5 +1,6 @@
 package com.linvy.culinaryhorizons;
 
+import com.linvy.culinaryhorizons.block.StoveBlock;
 import cpw.mods.fml.common.Mod;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
@@ -63,6 +64,18 @@ public enum ModBlocks {
         ModItems.KELP_ROLL_SLICE, ModItems.KELP_ROLL_SLICE,
         ModItems.KELP_ROLL_SLICE}, true, new ItemStack(Items.bowl)
       ), "rice_roll_medley_block"
+    ),
+
+    //Functional Blocks
+
+    STOVE (
+      new StoveBlock(false),
+     "stove_block"
+    ),
+
+    STOVE_LIT (
+        new StoveBlock(true),
+        "lit_stove_block"
     ),
     ; // leave trailing semicolon
     //spotless:on

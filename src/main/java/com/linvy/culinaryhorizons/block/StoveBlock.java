@@ -1,0 +1,165 @@
+package com.linvy.culinaryhorizons.block;
+
+import com.linvy.culinaryhorizons.ModBlocks;
+import com.linvy.culinaryhorizons.ModCreativeTab;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+
+import java.util.Random;
+
+public class StoveBlock extends Block {
+
+    private final boolean isLit;
+
+    @SideOnly(Side.CLIENT)
+    private IIcon topTextureLit;
+    @SideOnly(Side.CLIENT)
+    private IIcon topTextureUnlit;
+    @SideOnly(Side.CLIENT)
+    private IIcon frontTextureLit;
+    @SideOnly(Side.CLIENT)
+    private IIcon frontTextureUnlit;
+    @SideOnly(Side.CLIENT)
+    private IIcon sideTexture;
+    @SideOnly(Side.CLIENT)
+    private IIcon bottomTexture;
+
+    public StoveBlock(boolean isLit) {
+        super(Material.rock);
+        this.isLit = isLit;
+        this.setHardness(2.0F);
+        this.setResistance(10.0F);
+        this.setStepSound(soundTypePiston);
+        this.setHarvestLevel("pickaxe", 0);
+
+        if (isLit) {
+            this.setLightLevel(0.875F);
+        }
+    }
+
+    @Override
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase placer, ItemStack stack) {
+        int facing = MathHelper.floor_double((double)(placer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+        world.setBlockMetadataWithNotify(x, y, z, facing, 2);
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player,
+                                    int side, float hitX, float hitY, float hitZ) {
+        if (world.isRemote) {
+            return true;
+        }
+
+        ItemStack heldStack = player.getCurrentEquippedItem();
+        if (heldStack != null) {
+            int meta = world.getBlockMetadata(x, y, z);
+
+            if (!isLit && heldStack.getItem() == Items.flint_and_steel) {
+                world.setBlock(x, y, z, ModBlocks.STOVE_LIT.get(), meta, 3);
+                world.playSoundEffect(x + 0.5, y + 0.5, z + 0.5, "fire.ignite", 1.0F,
+                    world.rand.nextFloat() * 0.4F + 0.8F);
+                heldStack.damageItem(1, player);
+                return true;
+            }
+
+            if (isLit && heldStack.getItem() instanceof net.minecraft.item.ItemSpade) {
+                world.setBlock(x, y, z, ModBlocks.STOVE.get(), meta, 3);
+                world.playSoundEffect(x + 0.5, y + 0.5, z + 0.5, "random.fizz", 0.5F, 2.6F);
+                heldStack.damageItem(1, player);
+                return true;
+            }
+
+            if (isLit && heldStack.getItem() == Items.water_bucket) {
+                world.setBlock(x, y, z, ModBlocks.STOVE.get(), meta, 3);
+                world.playSoundEffect(x + 0.5, y + 0.5, z + 0.5, "random.fizz", 0.5F, 2.6F);
+                if (!player.capabilities.isCreativeMode) {
+                    player.setCurrentItemOrArmor(0, new ItemStack(Items.bucket));
+                }
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public void onEntityWalking(World world, int x, int y, int z, Entity entity) {
+        if (isLit && !entity.isImmuneToFire()) {
+            entity.attackEntityFrom(net.minecraft.util.DamageSource.inFire, 1.0F);
+        }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
+        if (isLit) {
+            double xPos = x + 0.5D;
+            double yPos = y + 0.0D;
+            double zPos = z + 0.5D;
+
+            if (rand.nextInt(10) == 0) {
+                world.playSound(xPos, yPos, zPos, "fire.fire",
+                    1.0F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.3F, false);
+            }
+
+            // Smoke and flame particles
+            double offset = rand.nextDouble() * 0.6D - 0.3D;
+            world.spawnParticle("smoke", xPos + offset, yPos + 0.6D, zPos + offset, 0.0D, 0.0D, 0.0D);
+            world.spawnParticle("flame", xPos + offset, yPos + 0.6D, zPos + offset, 0.0D, 0.0D, 0.0D);
+        }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister register) {
+        this.sideTexture = register.registerIcon("culinaryhorizons:stove_side");
+        this.topTextureLit = register.registerIcon("culinaryhorizons:stove_top_on");
+        this.topTextureUnlit = register.registerIcon("culinaryhorizons:stove_top");
+        this.frontTextureLit = register.registerIcon("culinaryhorizons:stove_front_on");
+        this.frontTextureUnlit = register.registerIcon("culinaryhorizons:stove_front");
+        this.bottomTexture = register.registerIcon("culinaryhorizons:stove_bottom");
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int meta) {
+        int facing = meta & 3;
+
+        // Top
+        if (side == 1) {
+            return isLit ? topTextureLit : topTextureUnlit;
+        }
+
+        // Bottom
+        if (side == 0) {
+            return bottomTexture;
+        }
+
+        // Side 2 = north, 3 = south, 4 = west, 5 = east
+        if ((facing == 0 && side == 2) || // South
+            (facing == 1 && side == 5) || // West
+            (facing == 2 && side == 3) || // North
+            (facing == 3 && side == 4)) { // East
+            return isLit ? frontTextureLit : frontTextureUnlit;
+        }
+
+        return sideTexture;
+    }
+
+    @Override
+    public int getLightValue(IBlockAccess world, int x, int y, int z) {
+        return isLit ? 14 : 0;
+    }
+}

@@ -1,5 +1,6 @@
 package com.linvy.culinaryhorizons;
 
+import com.linvy.culinaryhorizons.util.HeatSourceRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -14,6 +15,7 @@ public class CommonProxy {
         ModEffects.init();
         ModItems.init();
         ModBlocks.init();
+        HeatSourceRegistry.init();
 
         CulinaryHorizons.LOG.info(Config.greeting);
         CulinaryHorizons.LOG.info("I am MyMod at version " + Tags.VERSION);

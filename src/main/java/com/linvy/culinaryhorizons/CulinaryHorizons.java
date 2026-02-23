@@ -3,7 +3,7 @@ package com.linvy.culinaryhorizons;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.linvy.culinaryhorizons.block.FeastTileEntity;
+import com.linvy.culinaryhorizons.TileEntity.FeastTileEntity;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;

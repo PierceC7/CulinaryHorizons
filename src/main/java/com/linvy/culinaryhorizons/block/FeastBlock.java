@@ -3,6 +3,7 @@ package com.linvy.culinaryhorizons.block;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.linvy.culinaryhorizons.TileEntity.FeastTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

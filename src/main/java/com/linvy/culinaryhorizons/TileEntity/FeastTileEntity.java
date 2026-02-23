@@ -1,4 +1,4 @@
-package com.linvy.culinaryhorizons.block;
+package com.linvy.culinaryhorizons.TileEntity;
 
 import java.util.ArrayList;
 
