@@ -1,8 +1,12 @@
 package com.linvy.culinaryhorizons.effect;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.ResourceLocation;
 
 public class ComfortEffect extends Potion {
 
@@ -32,5 +36,19 @@ public class ComfortEffect extends Potion {
     @Override
     public boolean isReady(int duration, int amplifier) {
         return duration % 80 == 0;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getStatusIconIndex() {
+        Minecraft.getMinecraft().renderEngine.bindTexture(
+            new ResourceLocation("culinaryhorizons", "textures/gui/potion_effects/comfort.png")
+        );
+        return super.getStatusIconIndex();
+    }
+
+    @Override
+    public boolean hasStatusIcon() {
+        return true;
     }
 }
