@@ -35,6 +35,12 @@ public class StoveBlock extends Block {
     private IIcon sideTexture;
     @SideOnly(Side.CLIENT)
     private IIcon bottomTexture;
+    @SideOnly(Side.CLIENT)
+    private IIcon bottomTexture_90;
+    @SideOnly(Side.CLIENT)
+    private IIcon bottomTexture_180;
+    @SideOnly(Side.CLIENT)
+    private IIcon bottomTexture_270;
 
     public StoveBlock(boolean isLit) {
         super(Material.rock);
@@ -51,7 +57,7 @@ public class StoveBlock extends Block {
 
     @Override
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase placer, ItemStack stack) {
-        int facing = MathHelper.floor_double((double)(placer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+        int facing = MathHelper.floor_double((double)(placer.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
         world.setBlockMetadataWithNotify(x, y, z, facing, 2);
     }
 
@@ -130,6 +136,9 @@ public class StoveBlock extends Block {
         this.frontTextureLit = register.registerIcon("culinaryhorizons:stove_front_on");
         this.frontTextureUnlit = register.registerIcon("culinaryhorizons:stove_front");
         this.bottomTexture = register.registerIcon("culinaryhorizons:stove_bottom");
+        this.bottomTexture_90 = register.registerIcon("culinaryhorizons:stove_bottom_90");
+        this.bottomTexture_180 = register.registerIcon("culinaryhorizons:stove_bottom_180");
+        this.bottomTexture_270 = register.registerIcon("culinaryhorizons:stove_bottom_270");
     }
 
     @Override
@@ -144,14 +153,19 @@ public class StoveBlock extends Block {
 
         // Bottom
         if (side == 0) {
-            return bottomTexture;
+            switch(facing) {
+                case 0: return bottomTexture;
+                case 1: return bottomTexture_90;
+                case 2: return bottomTexture_180;
+                case 3: return bottomTexture_270;
+            }
         }
 
         // Side 2 = north, 3 = south, 4 = west, 5 = east
-        if ((facing == 0 && side == 2) || // South
-            (facing == 1 && side == 5) || // West
-            (facing == 2 && side == 3) || // North
-            (facing == 3 && side == 4)) { // East
+        if ((facing == 0 && side == 3) || // South
+            (facing == 1 && side == 4) || // West
+            (facing == 2 && side == 2) || // North
+            (facing == 3 && side == 5)) { // East
             return isLit ? frontTextureLit : frontTextureUnlit;
         }
 

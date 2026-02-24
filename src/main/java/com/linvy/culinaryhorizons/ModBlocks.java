@@ -75,6 +75,7 @@ public enum ModBlocks {
 
     STOVE_LIT (
         new StoveBlock(true),
+        null,
         "lit_stove_block"
     ),
     ; // leave trailing semicolon
