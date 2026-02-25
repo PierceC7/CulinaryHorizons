@@ -2,9 +2,11 @@ package com.linvy.culinaryhorizons.block;
 
 import com.linvy.culinaryhorizons.ModBlocks;
 import com.linvy.culinaryhorizons.ModCreativeTab;
+import com.linvy.culinaryhorizons.TileEntity.StoveTileEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -12,6 +14,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
@@ -19,7 +22,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class StoveBlock extends Block {
+public class StoveBlock extends BlockContainer {
 
     private final boolean isLit;
 
@@ -53,6 +56,11 @@ public class StoveBlock extends Block {
         if (isLit) {
             this.setLightLevel(0.875F);
         }
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta) {
+        return new StoveTileEntity();
     }
 
     @Override
@@ -95,9 +103,36 @@ public class StoveBlock extends Block {
                 }
                 return true;
             }
+
+            TileEntity te = world.getTileEntity(x, y, z);
+            if (te instanceof StoveTileEntity stove) {
+                if (stove.addItem(heldStack)) {
+                    if (!player.capabilities.isCreativeMode) {
+                        heldStack.stackSize--;
+                        if (heldStack.stackSize <= 0) {
+                            player.setCurrentItemOrArmor(0, null);
+                        }
+                    }
+                    return true;
+                }
+            }
         }
 
         return false;
+    }
+
+    public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+        TileEntity te = world.getTileEntity(x, y, z);
+        if (te instanceof StoveTileEntity stove) {
+            for (int i = 0; i < StoveTileEntity.COOKING_SLOTS; i++) {
+                ItemStack stack = stove.getStackInSlot(i);
+                if (stack != null) {
+                    this.dropBlockAsItem(world, x, y, z, stack);
+                }
+            }
+        }
+
+        super.breakBlock(world, x, y, z, block, meta);
     }
 
     @Override
@@ -111,6 +146,8 @@ public class StoveBlock extends Block {
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
         if (isLit) {
+            int meta = world.getBlockMetadata(x, y, z);
+            int facing = meta & 3;
             double xPos = x + 0.5D;
             double yPos = y + 0.0D;
             double zPos = z + 0.5D;
@@ -121,9 +158,35 @@ public class StoveBlock extends Block {
             }
 
             // Smoke and flame particles
-            double offset = rand.nextDouble() * 0.6D - 0.3D;
-            world.spawnParticle("smoke", xPos + offset, yPos + 0.6D, zPos + offset, 0.0D, 0.0D, 0.0D);
-            world.spawnParticle("flame", xPos + offset, yPos + 0.6D, zPos + offset, 0.0D, 0.0D, 0.0D);
+            double horizontalOffset = rand.nextDouble() * 0.6D - 0.3D;
+            double xOffset, zOffset;
+
+            zOffset = switch (facing) {
+                case 0 -> {
+                    xOffset = horizontalOffset;
+                    yield 0.52D;
+                }
+                case 1 -> {
+                    xOffset = -0.52D;
+                    yield horizontalOffset;
+                }
+                case 2 -> {
+                    xOffset = horizontalOffset;
+                    yield -0.52D;
+                }
+                case 3 -> {
+                    xOffset = 0.52D;
+                    yield horizontalOffset;
+                }
+                default -> {
+                    xOffset = 0;
+                    yield 0;
+                }
+            };
+
+            double yOffset = rand.nextDouble() * 6.0D / 16.0D;
+            world.spawnParticle("smoke", xPos + xOffset, yPos + yOffset, zPos + zOffset, 0.0D, 0.0D, 0.0D);
+            world.spawnParticle("flame", xPos + xOffset, yPos + yOffset, zPos + zOffset, 0.0D, 0.0D, 0.0D);
         }
     }
 
@@ -175,5 +238,10 @@ public class StoveBlock extends Block {
     @Override
     public int getLightValue(IBlockAccess world, int x, int y, int z) {
         return isLit ? 14 : 0;
+    }
+
+    @Override
+    public int getRenderType() {
+        return 0; // Standard rendering for now
     }
 }

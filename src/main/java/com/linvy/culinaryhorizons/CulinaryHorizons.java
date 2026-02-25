@@ -33,7 +33,6 @@ public class CulinaryHorizons {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
-        GameRegistry.registerTileEntity(FeastTileEntity.class, "culinaryhorizons:FeastTileEntity");
     }
 
     @Mod.EventHandler

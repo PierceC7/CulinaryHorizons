@@ -16,6 +16,7 @@ public class CommonProxy {
         ModItems.init();
         ModBlocks.init();
         HeatSourceRegistry.init();
+        ModTileEntities.init();
 
         CulinaryHorizons.LOG.info(Config.greeting);
         CulinaryHorizons.LOG.info("I am MyMod at version " + Tags.VERSION);
