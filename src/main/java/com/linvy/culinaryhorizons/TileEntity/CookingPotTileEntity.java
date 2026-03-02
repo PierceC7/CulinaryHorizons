@@ -262,8 +262,7 @@ public class CookingPotTileEntity extends TileEntity implements ISidedInventory 
             while (totalXP > 0) {
                 int orbValue = net.minecraft.entity.item.EntityXPOrb.getXPSplit(totalXP);
                 totalXP -= orbValue;
-                worldObj.spawnEntityInWorld(new net.minecraft.entity.item.EntityXPOrb(
-                    worldObj, xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, orbValue));
+                worldObj.spawnEntityInWorld(new net.minecraft.entity.item.EntityXPOrb(worldObj, xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, orbValue));
             }
         }
 
@@ -468,16 +467,23 @@ public class CookingPotTileEntity extends TileEntity implements ISidedInventory 
     @Override
     public int[] getAccessibleSlotsFromSide(int side) {
         if (side == 1) {
-            return new int[]{0, 1, 2, 3, 4, 5, CONTAINER_SLOT};
+            return new int[]{0, 1, 2, 3, 4, 5};
         }
-
+        else if (side >= 2) {
+            return new int[]{CONTAINER_SLOT};
+        }
         return new int[]{OUTPUT_SLOT};
     }
 
     @Override
     public boolean canInsertItem(int slot, ItemStack stack, int side) {
-        if (side != 1) return false;
-        return isItemValidForSlot(slot, stack);
+        if (side == 1) {
+            return isItemValidForSlot(slot, stack);
+        }
+        else if (side >= 2) {
+            return slot == CONTAINER_SLOT && isItemValidForSlot(slot, stack);
+        }
+        return false;
     }
 
     @Override
