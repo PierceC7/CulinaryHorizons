@@ -1,6 +1,8 @@
 package com.linvy.culinaryhorizons;
 
+import com.linvy.culinaryhorizons.block.CookingPotBlock;
 import com.linvy.culinaryhorizons.block.StoveBlock;
+import com.linvy.culinaryhorizons.item.CookingPotItemBlock;
 import cpw.mods.fml.common.Mod;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
@@ -77,6 +79,12 @@ public enum ModBlocks {
         new StoveBlock(true),
         null,
         "lit_stove_block"
+    ),
+
+    COOKING_POT (
+      new CookingPotBlock(),
+        CookingPotItemBlock.class,
+        "cooking_pot"
     ),
     ; // leave trailing semicolon
     //spotless:on

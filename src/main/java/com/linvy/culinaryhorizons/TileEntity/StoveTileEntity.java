@@ -218,7 +218,6 @@ public class StoveTileEntity extends TileEntity implements ISidedInventory {
 
     @Override
     public Packet getDescriptionPacket() {
-        System.out.println("SERVER: Sending sync - slot 0 item: " + (cookingItems[0] != null ? cookingItems[0].getDisplayName() : "null"));
         NBTTagCompound nbt = new NBTTagCompound();
         this.writeToNBT(nbt);
         return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 0, nbt);
@@ -226,9 +225,7 @@ public class StoveTileEntity extends TileEntity implements ISidedInventory {
 
     @Override
     public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
-        System.out.println("CLIENT: Receiving sync BEFORE - slot 0: " + (cookingItems[0] != null));
         this.readFromNBT(pkt.func_148857_g());
-        System.out.println("CLIENT: Receiving sync AFTER - slot 0: " + (cookingItems[0] != null));
         this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         this.worldObj.markBlockRangeForRenderUpdate(xCoord, yCoord, zCoord, xCoord, yCoord, zCoord);
     }

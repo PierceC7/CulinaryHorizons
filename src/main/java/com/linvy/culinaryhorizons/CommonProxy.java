@@ -1,12 +1,18 @@
 package com.linvy.culinaryhorizons;
 
+import com.linvy.culinaryhorizons.recipe.CookingPotRecipeRegistry;
 import com.linvy.culinaryhorizons.util.HeatSourceRegistry;
+import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+
+import static com.linvy.culinaryhorizons.CulinaryHorizons.MODID;
 
 public class CommonProxy {
+
 
     // preInit "Run before anything else. Read your config, create blocks, items, etc, and register them with the
     // GameRegistry." (Remove if not needed)
@@ -19,11 +25,13 @@ public class CommonProxy {
         ModTileEntities.init();
 
         CulinaryHorizons.LOG.info(Config.greeting);
-        CulinaryHorizons.LOG.info("I am MyMod at version " + Tags.VERSION);
+        CulinaryHorizons.LOG.info("I am Culinary Horizons at version " + Tags.VERSION);
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
-    public void init(FMLInitializationEvent event) {}
+    public void init(FMLInitializationEvent event) {
+        CookingPotRecipeRegistry.init();
+    }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
     public void postInit(FMLPostInitializationEvent event) {}

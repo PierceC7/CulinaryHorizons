@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "meta=0": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot", "y": 0 },
+    "meta=1": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot", "y": 90 },
+    "meta=2": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot", "y": 180 },
+    "meta=3": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot", "y": 270 },
+
+    "meta=4": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot_handle", "y": 0 },
+    "meta=5": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot_handle", "y": 90 },
+    "meta=6": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot_handle", "y": 180 },
+    "meta=7": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot_handle", "y": 270 },
+
+    "meta=8": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot_tray", "y": 0 },
+    "meta=9": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot_tray", "y": 90 },
+    "meta=10": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot_tray", "y": 180 },
+    "meta=11": { "model": "culinaryhorizons:blocks/cooking_pot/cooking_pot_tray", "y": 270 }
+  }
+}

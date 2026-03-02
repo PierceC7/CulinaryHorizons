@@ -1,5 +1,6 @@
 package com.linvy.culinaryhorizons;
 
+import cpw.mods.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,6 +23,8 @@ public class CulinaryHorizons {
 
     public static final String MODID = "culinaryhorizons";
     public static final Logger LOG = LogManager.getLogger(MODID);
+    @Mod.Instance(MODID)
+    public static CulinaryHorizons instance;
 
     @SidedProxy(
         clientSide = "com.linvy.culinaryhorizons.ClientProxy",
@@ -33,6 +36,7 @@ public class CulinaryHorizons {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
     }
 
     @Mod.EventHandler

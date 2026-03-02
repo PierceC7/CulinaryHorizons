@@ -87,3 +87,8 @@ tile.shepherds_pie_block.name=Shepherd's Pie
 tile.rice_roll_medley_block.name=Rice Roll Medley
 
 tile.stove_block.name=Stove
+tile.cooking_pot.name=Cooking Pot
+
+container.cooking_pot=Cooking Pot
+container.cooking_pot.heated=Heated
+container.cooking_pot.not_heated=Not Heated
