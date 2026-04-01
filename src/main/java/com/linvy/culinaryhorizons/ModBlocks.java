@@ -24,7 +24,7 @@ public enum ModBlocks {
     // Feast blocks
     ROAST_CHICKEN_BLOCK(
         new FeastBlock(
-        ModItems.ROAST_CHICKEN_PORTION,
+        ModItems.ROAST_CHICKEN_PORTION.get(),
         4,
         true,
         new ItemStack(Items.bowl),
@@ -34,7 +34,7 @@ public enum ModBlocks {
 
     STUFFED_PUMPKIN_BLOCK(
         new FeastBlock(
-        ModItems.STUFFED_PUMPKIN_PORTION,
+        ModItems.STUFFED_PUMPKIN_PORTION.get(),
         4,
         false
         ), "stuffed_pumpkin_block"
@@ -42,7 +42,7 @@ public enum ModBlocks {
 
     HONEY_GLAZED_HAM_BLOCK(
         new FeastBlock(
-            ModItems.HONEY_GLAZED_HAM_PORTION,
+            ModItems.HONEY_GLAZED_HAM_PORTION.get(),
             4,
             true,
             new ItemStack(Items.bowl),
@@ -52,7 +52,7 @@ public enum ModBlocks {
 
     SHEPHERDS_PIE_BLOCK(
         new FeastBlock(
-            ModItems.SHEPHERDS_PIE_PORTION,
+            ModItems.SHEPHERDS_PIE_PORTION.get(),
             4,
             true,
             new ItemStack(Items.bowl)
@@ -60,11 +60,11 @@ public enum ModBlocks {
     ),
 
     RICE_ROLL_MEDLEY_BLOCK(
-      new FeastBlock(new Item[]{ModItems.COD_ROLL,
-        ModItems.COD_ROLL, ModItems.SALMON_ROLL,
-        ModItems.SALMON_ROLL, ModItems.SALMON_ROLL,
-        ModItems.KELP_ROLL_SLICE, ModItems.KELP_ROLL_SLICE,
-        ModItems.KELP_ROLL_SLICE}, true, new ItemStack(Items.bowl)
+      new FeastBlock(new Item[]{ModItems.COD_ROLL.get(),
+        ModItems.COD_ROLL.get(), ModItems.SALMON_ROLL.get(),
+        ModItems.SALMON_ROLL.get(), ModItems.SALMON_ROLL.get(),
+        ModItems.KELP_ROLL_SLICE.get(), ModItems.KELP_ROLL_SLICE.get(),
+        ModItems.KELP_ROLL_SLICE.get()}, true, new ItemStack(Items.bowl)
       ), "rice_roll_medley_block"
     ),
 

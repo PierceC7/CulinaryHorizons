@@ -8,6 +8,7 @@ public class FoodValues {
     public static final int SHORT_DURATION = 1200;
     public static final int MEDIUM_DURATION = 3600;
     public static final int LONG_DURATION = 6000;
+    public static final int SMALL_STACK = 16;
 
     // Raw Crops
     public static final int CABBAGE_NUTRITION = 2;

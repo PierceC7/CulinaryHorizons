@@ -47,7 +47,7 @@ public class CookingPotRecipeRegistry {
         );
 
         CookingPotRecipeRegistry.registerRecipe(
-            CookingPotRecipeBuilder.create(ModItems.BEEF_STEW, 1) // Placeholder
+            CookingPotRecipeBuilder.create(ModItems.BEEF_STEW.get(), 1) // Placeholder
                 .addIngredient(Items.beef)
                 .addIngredient(Items.carrot)
                 .addIngredient(Items.potato)

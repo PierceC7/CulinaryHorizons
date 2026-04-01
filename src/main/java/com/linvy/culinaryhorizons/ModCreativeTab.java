@@ -13,6 +13,6 @@ public class ModCreativeTab extends CreativeTabs {
 
     @Override
     public Item getTabIconItem() {
-        return ModItems.CHICKEN_SANDWICH;
+        return ModBlocks.STOVE.getItem();
     }
 }
