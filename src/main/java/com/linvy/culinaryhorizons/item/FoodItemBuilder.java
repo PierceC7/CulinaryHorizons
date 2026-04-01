@@ -20,6 +20,7 @@ public class FoodItemBuilder {
     private int maxStackSize = 64;
     private List<PotionEffect> effects = new ArrayList<>();
     private boolean showEffectTooltip = true;
+    private IFoodEatenCallback onEatenCallback = null;
 
     private FoodItemBuilder(String name, int healAmount, float saturation) {
         this.name = name;
@@ -75,6 +76,11 @@ public class FoodItemBuilder {
 
     public FoodItemBuilder addEffect(int potionId, int duration, int amplifier) {
         this.effects.add(new PotionEffect(potionId, duration, amplifier));
+        return this;
+    }
+
+    public FoodItemBuilder onEaten(IFoodEatenCallback callback) {
+        this.onEatenCallback = callback;
         return this;
     }
 

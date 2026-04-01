@@ -21,14 +21,16 @@ public class FoodItemBase extends ItemFood {
     private final ItemStack containerItem;
     private final PotionEffect[] effects;
     private final boolean showEffectTooltip;
+    private final IFoodEatenCallback onEatenCallback;
 
-    protected FoodItemBase(String name, int healAmount, float saturation, boolean isWolfFood, int eatDuration, ItemStack containerItem, boolean alwaysEdible, int maxStackSize, boolean showEffectTooltip, PotionEffect[] effects) {
+    protected FoodItemBase(String name, int healAmount, float saturation, boolean isWolfFood, int eatDuration, ItemStack containerItem, boolean alwaysEdible, int maxStackSize, boolean showEffectTooltip, IFoodEatenCallback onEatenCallback, PotionEffect[] effects) {
         super(healAmount, saturation, isWolfFood);
         this.setUnlocalizedName(name);
         this.eatDuration = eatDuration;
         this.containerItem = containerItem;
         this.effects = effects;
         this.showEffectTooltip = showEffectTooltip;
+        this.onEatenCallback = onEatenCallback;
 
         if (alwaysEdible) {
             this.setAlwaysEdible();
@@ -44,10 +46,15 @@ public class FoodItemBase extends ItemFood {
 
     @Override
     protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-        if (!world.isRemote && effects != null) {
-            for (PotionEffect effect : effects) {
+        if (!world.isRemote) {
+            if (effects != null) {
+                for (PotionEffect effect : effects) {
                 player.addPotionEffect(new PotionEffect(effect));
+                }
             }
+            if (onEatenCallback != null) {
+                onEatenCallback.onEaten(stack, world, player);
+            }            
         }
     }
 
